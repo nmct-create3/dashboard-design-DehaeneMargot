@@ -339,6 +339,17 @@ input::placeholder {
 
 .c-app__logo {
     background-color: var(--color-neutral-xxx-dark);
+    padding: var(--global-whitespace-lg) 18px;
+    font-weight: 600;
+}
+
+.c-logo {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-neutral-xxxx-light);
+    line-height: 20px;
+    margin: 0;
 }
 
 /*
