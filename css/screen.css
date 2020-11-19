@@ -319,15 +319,15 @@ input::placeholder {
 */
 
 .c-app {
+    --c-app__topbar-height: calc(var(--global-baseline) * 14);
     min-height: 100vh;
 }
 
 @media (min-width: 768px) {
     .c-app {
         display: grid;
-        grid-template-columns: 260px auto;
-        grid-template-rows: 70px auto;
-        grid-gap: 0;
+        grid-template-columns: 17rem 1fr;
+        grid-template-rows: var(--c-app__topbar-height) 1fr;
     }
 }
 
@@ -339,8 +339,12 @@ input::placeholder {
 
 .c-app__logo {
     background-color: var(--color-neutral-xxx-dark);
-    padding: var(--global-whitespace-lg) 18px;
+    padding: 0 var(--global-whitespace-lg);
     font-weight: 600;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
 }
 
 .c-logo {
@@ -362,6 +366,8 @@ input::placeholder {
     background-color: var(--color-neutral-xxxx-light);
     z-index: 10;
     box-shadow: 0 2px 6px -6px var(--color-neutral-xxxx-dark);
+    position: sticky;
+    top: 0;
 }
 
 /*
@@ -372,6 +378,73 @@ input::placeholder {
 
 .c-app__sidebar {
     background-color: var(--color-neutral-xx-dark);
+    position: sticky;
+    overflow: auto;
+    top: var(--c-app__topbar-height);
+    height: calc(100vh - var(--c-app__topbar-height));
+}
+
+/*
+    Component: Navigation
+    ---
+    Website navigation
+*/
+
+.c-main-nav__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.c-main-nav__item {
+    margin-bottom: var(--global-baseline);
+    position: relative;
+}
+
+.c-main-nav__item--is-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-main-nav__item::before {
+    position: absolute;
+    content: "";
+    width: var(--global-baseline);
+    background-color: var(--color-purple);
+    height: 100%;
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+}
+
+.c-main-nav__item:hover::before {
+    opacity: 1;
+}
+
+.c-main-nav__item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.c-main-nav__item--is-selected::before {
+    opacity: 1;
+}
+
+.c-main-nav__item__content {
+    padding: var(--global-whitespace-md) var(--global-whitespace-lg);
+    display: flex;
+    align-items: center;
+}
+
+.c-main-nav__item a {
+    color: var(--color-neutral-xxxx-light);
+    line-height: var(--global-whitespace-md);
+    text-decoration: none;
+}
+
+.c-main-nav__icon {
+    fill: var(--color-neutral);
+    width: calc(var(--global-baseline) * 3);
+    height: calc(var(--global-baseline) * 3);
+    margin: 0 var(--global-whitespace-xs) 0 0;
 }
 
 /*
